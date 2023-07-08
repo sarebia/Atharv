@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[22]:
 import csv
 with open("/content/FIFA.csv", 'r') as f:
 csv_reader = csv.reader(f)
@@ -44,3 +48,5 @@ print("8.Maximum played match in a league: ", max(mp))
 print("9.Minimum played match in a league: ", min(mp))
 #Maximum goals in league
 print("10.max goals in laegue : ",ln[gs.index(max(gs))])
+
+# In[ ]:
