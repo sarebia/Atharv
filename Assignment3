@@ -1,0 +1,67 @@
+import numpy as np
+# Define the dataset as a NumPy array
+data = np.array([
+[1, 'Portugal', 200000000, 'Ronaldo', 33, 'fifa',
+22],
+[2, 'Argentina', 300000000, 'Messi', 3, 'fifa',
+33],
+[3, 'Brazil', 400000000, 'Ronaldhino', 23, 'aefa',
+44],
+[4, 'Brazil', 500000000, 'Kaka', 32, 'uefa', 55],
+[5, 'Coratia', 600000000, 'Modric', 4, 'cefa', 66]
+])
+# Extract the columns from the NumPy array
+pln = data[:, 0].astype(int)
+tn = data[:, 1]
+sal = data[:, 2].astype(float)
+pn = data[:, 3]
+gs = data[:, 4].astype(int)
+ln = data[:, 5]
+mp = data[:, 6].astype(int)
+# Print the converted data
+print("Player number:", pln)
+print("Team name:", tn)
+print("Player salaries:", sal)
+print("Player name:", pn)
+print("Goals score:", gs)
+print("League name:", ln)
+print("Matches played:", mp)
+# 1. Maximum Salary
+max_salary = np.max(sal)
+print("1. Maximum salary:", max_salary)
+# 2. Player who scored the most goals
+max_goals = np.max(gs)
+max_goals_player = pn[gs.argmax()]
+print("2. Player who scored the most goals:",
+max_goals_player)
+# 3. Player whose salary is Minimum
+min_salary_player = pn[sal.argmin()]
+print("3. Player whose minimum salary:",
+min_salary_player)
+# 4. Minimum Salary
+min_salary = np.min(sal)
+print("4. Minimum salary:", min_salary)
+# 5. Player whose salary is Maximum
+max_salary_player = pn[sal.argmax()]
+print("5. Player whose maximum salary:",
+max_salary_player)
+# 6. Player who scored the least goals
+min_goals = np.min(gs)
+min_goals_player = pn[gs.argmin()]
+print("6. Player who scored the least goals:",
+min_goals_player)
+# 7. Average Salary
+avg_salary = np.mean(sal)
+print("7. Average salary:", avg_salary)
+# 8. League which has the most number of matches
+max_matches_league = ln[mp.argmax()]
+print("8. League with the most played matches:",
+max_matches_league)
+# 9. League which has the least number of matches
+min_matches_league = ln[mp.argmin()]
+print("9. League with the least played matches:",
+min_matches_league)
+# 10. Maximum goals in a league
+max_goals_league = ln[gs.argmax()]
+print("10. League with the maximum goals:",
+max_goals_league)
