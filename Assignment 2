@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[22]:
 import csv
 with open("/content/FIFA.csv", 'r') as f:
 csv_reader = csv.reader(f)
@@ -70,3 +74,4 @@ most_matches_player = row[3]
 break
 print("3.Player who played the most matches: ",
 most_matches_player)
+# In[ ]:
