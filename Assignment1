@@ -1,0 +1,46 @@
+import csv
+with open("/content/FIFA.csv", 'r') as f:
+csv_reader = csv.reader(f)
+next(csv_reader) # Skip the header row
+pln, tn, sal, pn, gs, ln, mp = [], [], [], [], [], [], []
+for row in csv_reader:
+pln.append(row[0])
+tn.append(row[1])
+sal.append(int(row[2]))
+pn.append(row[3])
+gs.append(row[4])
+ln.append(row[5])
+mp.append(int(row[6]))
+print("Player number: ", pln)
+print("Team name: ", tn)
+print("Players salaries: ", sal)
+print("Player name:", pn)
+print("Goals score:", gs)
+print("League name:", ln)
+print("Matches played:", mp)
+# Max Salary
+print("1.Maximum Auction price: ", max(sal))
+# player who score most goals
+max_goals = max(gs)
+idx = gs.index(max_goals)
+print("2.Player who scored the most goals: ", pn[idx])
+#player whose Salary is Minimum
+print("3.player whose minimum Auction price :
+",pn[sal.index(min(sal))])
+# min salary
+print("4.Minimum Auction price: ", min(sal))
+#player whose Salary is Maximum
+print("5.player whose maximum Auction price :
+",pn[sal.index(max(sal))])
+# player who score less goals
+min_goals = min(gs)
+idx = gs.index(min_goals)
+print("6.Player who scored the less goals: ", pn[idx])
+# avg salary
+print("7.avg Auction price: ",( max(sal)+ min(sal))/2)
+#league which has most number of matches
+print("8.Maximum played match in a league: ", max(mp))
+#league which has less number of matches
+print("9.Minimum played match in a league: ", min(mp))
+#Maximum goals in league
+print("10.max goals in laegue : ",ln[gs.index(max(gs))])
