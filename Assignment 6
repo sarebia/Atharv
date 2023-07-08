@@ -1,0 +1,83 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[12]:
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+# Read the dataset from a CSV file
+df = pd.read_csv("/content/salary_data.csv")
+# Extract the relevant columns for clustering
+X = df[['YearsExperience', 'Salary']].values
+# Perform k-means clustering
+k = 3 # Number of clusters
+kmeans = KMeans(n_clusters=k)
+kmeans.fit(X)
+# Get the cluster labels and centroids
+labels = kmeans.labels_
+centroids = kmeans.cluster_centers_
+# Visualize the clusters
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+plt.scatter(centroids[:, 0], centroids[:, 1],
+marker='x', color='r')
+plt.xlabel('YearsExperience')
+plt.ylabel('Salary')
+plt.title('K-means Clustering')
+plt.show()
+
+#KNN
+import pandas as pd
+import numpy as np
+from sklearn.neighbors import KNeighborsRegressor
+import matplotlib.pyplot as plt
+# Read the dataset from a CSV file
+df = pd.read_csv("/content/salary_data.csv")
+# Extract the relevant columns for prediction
+X = df[['YearsExperience']].values
+y = df['Salary'].values
+# Perform KNN prediction
+k = 3 # Number of nearest neighbors
+knn = KNeighborsRegressor(n_neighbors=k)
+knn.fit(X, y)
+# Generate salary predictions for the given years of
+experience
+years_of_exp = np.linspace(0, 12, 100).reshape(-1, 1)
+salary_predictions = knn.predict(years_of_exp)
+# Visualize the KNN predictions
+plt.scatter(X, y, color='b', label='Actual Data')
+plt.plot(years_of_exp, salary_predictions, color='r',
+label='KNN Predictions')
+plt.xlabel('YearsExperience')
+plt.ylabel('Salary')
+plt.title('KNN Salary Prediction')
+plt.legend()
+plt.show()
+
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+# Read the dataset from a CSV file
+df = pd.read_csv("/content/salary_data.csv")
+# Extract the relevant columns for prediction
+X = df[['YearsExperience']].values
+y = df['Salary'].values
+# Perform linear regression
+regression = LinearRegression()
+regression.fit(X, y)
+# Generate salary predictions for the given years of
+experience
+years_of_exp = np.linspace(0, 12, 100).reshape(-1, 1)
+salary_predictions = regression.predict(years_of_exp)
+# Visualize the linear regression predictions
+plt.scatter(X, y, color='b', label='Actual Data')
+plt.plot(years_of_exp, salary_predictions, color='r',
+label='Linear Regression Predictions')
+plt.xlabel('YearsExperience')
+plt.ylabel('Salary')
+plt.title('Linear Regression Salary Prediction')
+plt.legend()
+plt.show()
+
+# In[ ]:
