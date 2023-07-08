@@ -1,0 +1,72 @@
+import csv
+with open("/content/FIFA.csv", 'r') as f:
+csv_reader = csv.reader(f)
+next(csv_reader) # Skip the header row
+pln, tn, sal, pn, gs, ln, mp = [], [], [], [], [], [], []
+for row in csv_reader:
+pln.append(row[0])
+tn.append(row[1])
+sal.append(int(row[2]))
+pn.append(row[3])
+gs.append(row[4])
+ln.append(row[5])
+mp.append(int(row[6]))
+print("Player number: ", pln)
+print("Team name: ", tn)
+print("Players salaries: ", sal)
+print("Player name:", pn)
+print("Goals score:", gs)
+print("League name:", ln)
+print("Matches played:", mp)
+import csv
+with open("/content/FIFA.csv", 'r') as f:
+csv_reader = csv.reader(f)
+next(csv_reader) # Skip the header row
+player_dict = {}
+for row in csv_reader:
+player_name = row[3]
+player_salary = int(row[2])
+player_dict[player_name] = player_salary
+# Find the most valuable player
+most_valuable_player = max(player_dict, key=player_dict.get)
+max_salary = player_dict[most_valuable_player]
+print("1.Most valuable player: ", most_valuable_player)
+print("Salary: ", max_salary)
+import csv
+with open("/content/FIFA.csv", 'r') as f:
+csv_reader = csv.reader(f)
+next(csv_reader) # Skip the header row
+player_goals = []
+for row in csv_reader:
+player_name = row[3]
+goals_scored = int(row[4])
+player_goals.append((player_name, goals_scored))
+# Find the player with the most goals
+most_goals_player = max(player_goals, key=lambda x: x[1])
+most_goals_player_name = most_goals_player[0]
+most_goals_scored = most_goals_player[1]
+print("2.Player with the most goals: ", most_goals_player_name)
+print("Goals scored: ", most_goals_scored)
+import csv
+import numpy as np
+with open("/content/FIFA.csv", 'r') as f:
+csv_reader = csv.reader(f)
+next(csv_reader) # Skip the header row
+mp = []
+for row in csv_reader:
+matches_played = int(row[6])
+mp.append(matches_played)
+# Convert the matches played list to a numpy array
+mp_array = np.array(mp)
+# Find the index of the player with the most matches played
+most_matches_index = np.argmax(mp_array)
+# Retrieve the player name with the most matches played
+with open("/content/FIFA.csv", 'r') as f:
+csv_reader = csv.reader(f)
+next(csv_reader) # Skip the header row
+for i, row in enumerate(csv_reader):
+if i == most_matches_index:
+most_matches_player = row[3]
+break
+print("3.Player who played the most matches: ",
+most_matches_player)
