@@ -1,0 +1,116 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[22]:
+import pandas as pd
+df = pd.read_csv("/content/FIFA (1).csv")
+# 1. Maximum Salary
+max_salary = df['SAL'].max()
+print("1. Maximum Auction price: ", max_salary)
+# 2. Player who scored the most goals
+max_goals = df['GS'].max()
+max_goals_player = df.loc[df['GS'] == max_goals,
+'PN'].iloc[0]
+print("2. Player who scored the most goals: ",
+max_goals_player)
+# 3. Player whose salary is Minimum
+min_salary_player = df.loc[df['SAL'] ==
+df['SAL'].min(), 'PN'].iloc[0]
+print("3. Player whose minimum Auction price: ",
+min_salary_player)
+# 4. Minimum Salary
+min_salary = df['SAL'].min()
+print("4. Minimum Auction price: ", min_salary)
+# 5. Player whose salary is Maximum
+max_salary_player = df.loc[df['SAL'] ==
+df['SAL'].max(), 'PN'].iloc[0]
+print("5. Player whose maximum Auction price: ",
+max_salary_player)
+# 6. Player who scored the least goals
+min_goals = df['GS'].min()
+min_goals_player = df.loc[df['GS'] == min_goals,
+'PN'].iloc[0]
+print("6. Player who scored the less goals: ",
+min_goals_player)
+# 7. Average Salary
+avg_salary = df['SAL'].mean()
+print("7. Average Auction price: ", avg_salary)
+# 8. League which has the most number of matches
+max_matches_league = df.loc[df['MP'] == df['MP'].max(),
+'LN'].iloc[0]
+print("8. Maximum played match in a league: ",
+max_matches_league)
+# 9. League which has the least number of matches
+min_matches_league = df.loc[df['MP'] == df['MP'].min(),
+'LN'].iloc[0]
+print("9. Minimum played match in a league: ",
+min_matches_league)
+# 10. Maximum goals in a league
+max_goals_league = df.loc[df['GS'] == df['GS'].max(),
+'LN'].iloc[0]
+print("10. Maximum goals in a league: ",
+max_goals_league)
+#11. print statitics of all players
+salary_stats = df['SAL'].describe()
+print("11.Descriptive statistics for player
+salaries:\n", salary_stats)
+#12.print Mean of salaries of all players
+mean_salary = df['SAL'].mean()
+print("12.Mean salary of players: ", mean_salary)
+#13.print median of goals of all players
+median_goals = df['GS'].median()
+print("13.Median goals score of players: ",
+median_goals)
+#14.print maximum goals scored by each team
+max_goals_by_team = df.groupby('TN')['GS'].max()
+print("14.Maximum goals scored by each team:\n",
+max_goals_by_team)
+#15.print number of players with match records
+available
+matches_count = df['MP'].count()
+print("15. Number of players with match records
+available: ", matches_count)
+#16.print correlation between player salaries and goals
+salary_goals_correlation = df['SAL'].corr(df['GS'])
+print("16.Correlation between player salaries and goals
+scored: ", salary_goals_correlation)
+#17.print covariance between player salaries and
+matches played
+salary_matches_covariance = df['SAL'].cov(df['MP'])
+print("17.Covariance between player salaries and
+matches played: ", salary_matches_covariance)
+#18.print 90th Percentile of Player Salaries
+salary_percentile = df['SAL'].quantile(0.9)
+print("18.90th Percentile of Player Salaries:",
+salary_percentile)
+#19.performing data cleaning
+# Drop any rows with missing values
+df.dropna(inplace=True)
+# Convert numerical columns to appropriate data types
+df['SAL'] = df['SAL'].astype(float)
+df['GS'] = df['GS'].astype(int)
+df['MP'] = df['MP'].astype(int)
+# Print the cleaned data
+print("Cleaned Data:")
+print(df.head())
+# 19. How many players have scored more than 10 goals?
+num_players_high_goals = df[df['GS'] > 10].shape[0]
+print("19. Number of players with more than 10 goals:
+", num_players_high_goals)
+#20.DATA WRAGLING AND TRANSMISSION
+# Data Wrangling
+# Filter players who have scored more than 10 goals
+filtered_df = df[df['GS'] > 10]
+# Sort players by their salaries in descending order
+sorted_df = df.sort_values(by='SAL', ascending=False)
+# Data Transmission
+# Calculate the total goals scored by each league
+league_goals_sum = df.groupby('LN')['GS'].sum()
+# Output the results
+print("20.Filtered players with more than 10 goals:\n",
+filtered_df)
+print("21.Players sorted by salary:\n", sorted_df)
+print("22.Average salary by team:\n", team_salary_avg)
+print("23.Total goals scored by league:\n",
+league_goals_sum)
+# In[ ]:
